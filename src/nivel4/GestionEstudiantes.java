@@ -17,13 +17,22 @@ public class GestionEstudiantes {
         char gender;
 
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+
         name = JOptionPane.showInputDialog("Digite los nombres del estudiante: ");
         lastN = JOptionPane.showInputDialog("Digite los apellidos del estudiante: ");
         phone = JOptionPane.showInputDialog("Digite el teléfono del estudiante: ");
 
         //Validar
         grade = Float.parseFloat(JOptionPane.showInputDialog("Digite la nota del estudiante: "));
+        while (grade<0 || grade>5){
+            grade = Float.parseFloat(JOptionPane.showInputDialog("Introduzca una nota entre 0 y 5 para que sea válida"));
+
+        }
         gender = JOptionPane.showInputDialog("Digite el género del estudiante: ").charAt(0);
+        while (gender == 'M' || gender == 'm'){
+            gender = JOptionPane.showInputDialog("Digite el género del estudiante: ").charAt(0);
+
+        }
 
         Estudiante stud = new Estudiante(id, name, lastN, phone, grade, gender);
         this.misEstudiantes.add(stud);
