@@ -17,20 +17,19 @@ public class GestionEstudiantes {
         char gender;
 
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
-
         name = JOptionPane.showInputDialog("Digite los nombres del estudiante: ");
         lastN = JOptionPane.showInputDialog("Digite los apellidos del estudiante: ");
         phone = JOptionPane.showInputDialog("Digite el teléfono del estudiante: ");
 
-        //Validar
         grade = Float.parseFloat(JOptionPane.showInputDialog("Digite la nota del estudiante: "));
         while (grade<0 || grade>5){
             grade = Float.parseFloat(JOptionPane.showInputDialog("Introduzca una nota entre 0 y 5 para que sea válida"));
 
         }
+
         gender = JOptionPane.showInputDialog("Digite el género del estudiante: ").charAt(0);
-        while (gender == 'M' || gender == 'm'){
-            gender = JOptionPane.showInputDialog("Digite el género del estudiante: ").charAt(0);
+        while (gender != 'M' && gender != 'm' && gender != 'F' && gender != 'f'){
+            gender = JOptionPane.showInputDialog("Digite un valor adecuado: ").charAt(0);
 
         }
 
@@ -43,12 +42,11 @@ public class GestionEstudiantes {
     public void buscarEstudiante(){
 
         String id;
-        boolean existe = false;
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+        boolean existe = existeCodigo(id);
         for(Estudiante stud: this.misEstudiantes){
             if(stud.getIdEstudiante().equals(id)) {
                 System.out.println(stud);
-                existe = true;
                 break;
             }
         }
@@ -71,12 +69,11 @@ public class GestionEstudiantes {
 
     public void eliminarEstudiante(){
         String id;
-        boolean existe = false;
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+        boolean existe = existeCodigo(id);
         for(Estudiante stud: this.misEstudiantes){
             if(stud.getIdEstudiante().equals(id)){
                 this.misEstudiantes.remove(stud);
-                existe = true;
                 JOptionPane.showMessageDialog(null, "El estudiante con id " + id + " fue eliminado con éxito");
                 break;
             }
@@ -92,17 +89,14 @@ public class GestionEstudiantes {
 
     public void modificarId() {
         String id, nuevoDato;
-        boolean existe = false;
-
 
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+        boolean existe = existeCodigo(id);
         for (Estudiante stud : this.misEstudiantes) {
             if (stud.getIdEstudiante().equals(id)) {
 
-                //Validar
                 nuevoDato = JOptionPane.showInputDialog("Digite el nuevo código: ");
                 stud.setIdEstudiante(nuevoDato);
-                existe = true;
                 JOptionPane.showMessageDialog(null, "El id fue actualizado con éxito");
                 break;
             }
@@ -118,18 +112,13 @@ public class GestionEstudiantes {
     public void modificarNombres(){
 
         String id, nuevoDato;
-        boolean existe = false;
-
-
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+        boolean existe = existeCodigo(id);
         for(Estudiante stud: this.misEstudiantes){
             if(stud.getIdEstudiante().equals(id)){
-
-                //Validar
                 nuevoDato = JOptionPane.showInputDialog("Digite el nuevo nombre: ");
                 stud.setNombres(nuevoDato);
                 JOptionPane.showMessageDialog(null, "El nombre fue actualizado con éxito");
-                existe = true;
                 break;
             }
 
@@ -143,18 +132,16 @@ public class GestionEstudiantes {
 
     public void modificarApellidos(){
         String id, nuevoDato;
-        boolean existe = false;
 
 
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+        boolean existe = existeCodigo(id);
         for(Estudiante stud: this.misEstudiantes){
             if(stud.getIdEstudiante().equals(id)){
 
-                //Validar
                 nuevoDato = JOptionPane.showInputDialog("Digite el nuevo apellido: ");
                 stud.setApellidos(nuevoDato);
                 JOptionPane.showMessageDialog(null, "El apellido fue actualizado con éxito");
-                existe = true;
                 break;
             }
 
@@ -168,10 +155,9 @@ public class GestionEstudiantes {
 
     public void modificarTelefono(){
         String id, nuevoDato;
-        boolean existe = false;
-
 
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+        boolean existe = existeCodigo(id);
         for(Estudiante stud: this.misEstudiantes){
             if(stud.getIdEstudiante().equals(id)){
 
@@ -179,7 +165,6 @@ public class GestionEstudiantes {
                 nuevoDato = JOptionPane.showInputDialog("Digite el nuevo teléfono: ");
                 stud.setTelefono(nuevoDato);
                 JOptionPane.showMessageDialog(null, "El teléfono fue actualizado con éxito");
-                existe = true;
                 break;
             }
 
@@ -196,18 +181,16 @@ public class GestionEstudiantes {
     public void modificarNotaFinal(){
         String id;
         float nuevoDato;
-        boolean existe = false;
 
 
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+        boolean existe = existeCodigo(id);
         for(Estudiante stud: this.misEstudiantes){
             if(stud.getIdEstudiante().equals(id)){
 
-                //Validar
                 nuevoDato = Float.parseFloat(JOptionPane.showInputDialog("Digite la nueva nota: "));
                 stud.setNotaFinal(nuevoDato);
                 JOptionPane.showMessageDialog(null, "La nota fue actualizada con éxito");
-                existe = true;
                 break;
             }
 
@@ -221,18 +204,15 @@ public class GestionEstudiantes {
 
     public void modificarGenero(){
         String id, nuevoDato;
-        boolean existe = false;
 
 
         id = JOptionPane.showInputDialog("Digite el código del estudiante: ");
+        boolean existe = existeCodigo(id);
         for(Estudiante stud: this.misEstudiantes){
             if(stud.getIdEstudiante().equals(id)){
-
-                //Validar
                 nuevoDato = JOptionPane.showInputDialog("Digite el nuevo género del estudiante: ");
                 stud.setGenero(nuevoDato.charAt(0));
                 JOptionPane.showMessageDialog(null, "El género fue actualizado con éxito");
-                existe = true;
                 break;
             }
 
